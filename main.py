@@ -99,67 +99,56 @@ def drawCard(tNumber):
 
 
 import random
-
+agian = True 
 displayCard(12)
 
-card = int(input("which card? 0-11"))
-card2 = int(input("which card? 0-11"))
-card3 = int(input("which card? 0-11"))
-
-chosen_cards = chooseCard(cards, card, card2, card3)
-
-
-def isSet(card1, card2, card3):
-  # F and F  = true or (True and True and True)
-  #false and true = false
-  # (card1[0] == card2[0]) and (card2[0] == card3[0]) checks if all the cards have the same attribute(in this case its shape).
-  # or if they all have completely different attributes
-  if not (((card1[0] == card2[0]) and (card2[0] == card3[0])) or
-          (((card1[0] != card2[0]) and (card1[0] != card3[0])) and
-           (card2[0] != card3[0]))):
-    return False
-
-  if not (((card1[1] == card2[1]) and (card2[1] == card3[1])) or
-          (((card1[1] != card2[1]) and (card1[1] != card3[1])) and
-           (card2[1] != card3[1]))):
-    return False
-
-  if not (((card1[2] == card2[2]) and (card2[2] == card3[2])) or
-          (((card1[2] != card2[2]) and (card1[2] != card3[2])) and
-           (card2[2] != card3[2]))):
-    return False
-
-  if not (((card1[3] == card2[3]) and (card2[3] == card3[3])) or
-          (((card1[3] != card2[3]) and (card1[3] != card3[3])) and
-           (card2[3] != card3[3]))):
-    return False
-
-  return True
-
-
-if isSet(chosen_cards[0], chosen_cards[1], chosen_cards[2]):
-  print("These cards are a set!")
-else:
-  print("These cards are not a set. Try again")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+while agian:
+  card = int(input("which card would you like to choose? 0-11 "))
+  card2 = int(input("which card would you like to choose? 0-11 "))
+  card3 = int(input("which card would you like to choose? 0-11 "))
+  
+  chosen_cards = chooseCard(cards, card, card2, card3)
+  
+  
+  def isSet(card1, card2, card3):
+    # F and F  = true or (True and True and True)
+    #false and true = false
+    # (card1[0] == card2[0]) and (card2[0] == card3[0]) checks if all the cards have the same attribute(in this case its shape).
+    # or if they all have completely different attributes
+    if not (((card1[0] == card2[0]) and (card2[0] == card3[0])) or
+            (((card1[0] != card2[0]) and (card1[0] != card3[0])) and
+             (card2[0] != card3[0]))):
+      return False
+  
+    if not (((card1[1] == card2[1]) and (card2[1] == card3[1])) or
+            (((card1[1] != card2[1]) and (card1[1] != card3[1])) and
+             (card2[1] != card3[1]))):
+      return False
+  
+    if not (((card1[2] == card2[2]) and (card2[2] == card3[2])) or
+            (((card1[2] != card2[2]) and (card1[2] != card3[2])) and
+             (card2[2] != card3[2]))):
+      return False
+  
+    if not (((card1[3] == card2[3]) and (card2[3] == card3[3])) or
+            (((card1[3] != card2[3]) and (card1[3] != card3[3])) and
+             (card2[3] != card3[3]))):
+      return False
+  
+    return True
+  
+  # if the card is a set prints cards are a set an kicks out of the loop 
+  if isSet(chosen_cards[0], chosen_cards[1], chosen_cards[2]):
+    print("These cards are a set!")
+    agian = False
+  else:
+    answer = input("These cards are not a set. Try again ")
+    
+    if answer == "exit":
+      agian = False
+  
+  
+  
 '''
 c1 = str(random.randint(0, 2)) + str(random.randint(0, 2)) + str(
   random.randint(0, 2)) + str(random.randint(0, 2))
@@ -182,4 +171,5 @@ print(drawCard(c1), drawCard(c2), drawCard(c3))
 print()
 '''
 
+quit()
 
